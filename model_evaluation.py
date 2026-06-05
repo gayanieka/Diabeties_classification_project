@@ -1,7 +1,7 @@
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import GridSearchCV
 
-from balance_data import X_resampled
+from balance_data import X_resampled, y_resampled
 
 # Define a grid of parameters to test
 param_grid = {
