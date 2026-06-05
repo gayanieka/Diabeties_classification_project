@@ -39,3 +39,8 @@ for col in cols_to_clean:
     df[col] = df[col].clip(lower=lower_bound, upper=upper_bound)
 
 print("\nOutlier treatment complete.")
+
+# Save the cleaned dataframe to a new file
+df.to_csv('cleaned_diabetes_data.csv', index=False)
+
+print("Cleaned data saved successfully as 'cleaned_diabetes_data.csv'")
