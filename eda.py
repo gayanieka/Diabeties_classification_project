@@ -88,6 +88,24 @@ plt.title('General Health Distribution by Diabetes Status')
 plt.xlabel('Diabetes Status (0=None, 1=Pre, 2=Diabetes)')
 plt.show()
 
+#anova test for general health and diabetes status
+# Separate GenHlth data into the three groups
+gen_0 = df[df['Diabetes_012'] == 0]['GenHlth']
+gen_1 = df[df['Diabetes_012'] == 1]['GenHlth']
+gen_2 = df[df['Diabetes_012'] == 2]['GenHlth']
+# Perform Kruskal-Wallis H-test
+h_stat, p_value = stats.kruskal(gen_0, gen_1, gen_2)
+print(f"Kruskal-Wallis H-test for GenHlth:")
+print(f"H-statistic: {h_stat:.4f}")
+print(f"P-value: {p_value:.4e}")
+# Interpretation
+if p_value < 0.05:
+    print("Result: Reject the null hypothesis. There is a statistically significant difference in General Health across the groups.")
+else:
+    print("Result: Fail to reject the null hypothesis. General Health differences are not statistically significant.")
+
+
+
 #check how physical health relates to Diabetes
 plt.figure(figsize=(10, 6))
 sns.boxplot(x='Diabetes_012', y='PhysHlth', data=df)
