@@ -78,6 +78,39 @@ sns.countplot(x='Diabetes_012', hue='AnyHealthcare', data=df)
 plt.title('Diabetes Status by AnyHealthcare')
 plt.show()
 
+#check how NoDocbcCost relates to Diabetes
+plt.figure(figsize=(8, 5))
+sns.countplot(x='Diabetes_012', hue='NoDocbcCost', data=df)
+plt.title('Diabetes Status by No Doctor Cost')
+plt.show()
+
+#check how diff walking relates to Diabetes
+plt.figure(figsize=(8, 5))
+sns.countplot(x='Diabetes_012', hue='DiffWalk', data=df)
+plt.title('Diabetes Status by Difficulty Walking')
+plt.show()
+
+#check how sex relates to Diabetes
+plt.figure(figsize=(8, 5))
+sns.countplot(x='Diabetes_012', hue='Sex', data=df)
+plt.title('Diabetes Status by Sex')
+plt.show()
+
+#check how education relates to Diabetes
+plt.figure(figsize=(10, 6))
+sns.boxplot(x='Diabetes_012', y='Education', data=df)
+plt.title('Education Distribution by Diabetes Status')
+plt.xlabel('Diabetes Status (0=None, 1=Pre, 2=Diabetes)')
+plt.show()
+
+#check how income relates to Diabetes
+plt.figure(figsize=(10, 6))
+sns.boxplot(x='Diabetes_012', y='Income', data=df)
+plt.title('Income Distribution by Diabetes Status')
+plt.xlabel('Diabetes Status (0=None, 1=Pre, 2=Diabetes)')
+plt.show()
+
+
 
 #heatmap of correlation to understand bettween in data in the dataset
 plt.figure(figsize=(12, 10))
