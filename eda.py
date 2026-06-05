@@ -1,8 +1,9 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
-df = pd.read_csv("cleaned_diabetes_data.csv")
+from scipy import stats
 
+df = pd.read_csv("cleaned_diabetes_data.csv")
 df.info()
 
 
@@ -30,6 +31,8 @@ plt.ylabel('BMI')
 plt.legend(title='PhysActivity', labels=['Inactive', 'Active'])
 plt.show()
 
+
+
 #Check how age relates to Diabetes
 plt.figure(figsize=(10, 6))
 sns.boxplot(x='Diabetes_012', y='Age', data=df)
@@ -37,10 +40,29 @@ plt.title('Age Distribution by Diabetes Status')
 plt.xlabel('Diabetes Status (0=None, 1=Pre, 2=Diabetes)')
 plt.show()
 
+#One way anova for age and diabetes status
+# Separate the age data into three groups
+age_0 = df[df['Diabetes_012'] == 0]['Age']
+age_1 = df[df['Diabetes_012'] == 1]['Age']
+age_2 = df[df['Diabetes_012'] == 2]['Age']
+# Perform One-Way ANOVA
+f_stat, p_value = stats.f_oneway(age_0, age_1, age_2)
+print(f"ANOVA Results for Age:")
+print(f"F-statistic: {f_stat:.4f}")
+print(f"P-value: {p_value:.4e}")
+# Interpretation
+if p_value < 0.05:
+    print("Result: Reject the null hypothesis. There is a statistically significant difference in age between groups.")
+else:
+    print("Result: Fail to reject the null hypothesis. Age differences are not statistically significant.")
+
+
+
+
+
 #check how high blood pressure relates to Diabetes
 plt.figure(figsize=(10, 6))
 sns.boxplot(x='Diabetes_012', y='BMI', hue='HighBP', data=df)
-
 plt.title('BMI Distribution by Diabetes Status and High Blood Pressure')
 plt.xlabel('Diabetes Status (0=None, 1=Pre, 2=Diabetes)')
 plt.ylabel('BMI')
