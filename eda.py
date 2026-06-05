@@ -51,6 +51,32 @@ plt.title('General Health Distribution by Diabetes Status')
 plt.xlabel('Diabetes Status (0=None, 1=Pre, 2=Diabetes)')
 plt.show()
 
+#check how physical health relates to Diabetes
+plt.figure(figsize=(10, 6))
+sns.boxplot(x='Diabetes_012', y='PhysHlth', data=df)
+plt.title('Physical Health Distribution by Diabetes Status')
+plt.xlabel('Diabetes Status (0=None, 1=Pre, 2=Diabetes)')
+plt.show()
+
+#check how mental health relates to Diabetes
+plt.figure(figsize=(10, 6))
+sns.boxplot(x='Diabetes_012', y='MentHlth', data=df)
+plt.title('Mental Health Distribution by Diabetes Status')
+plt.xlabel('Diabetes Status (0=None, 1=Pre, 2=Diabetes)')
+plt.show()
+
+#check how HvyAlcoholConsump relates to Diabetes
+plt.figure(figsize=(10, 6))
+sns.boxplot(x='Diabetes_012', y='HvyAlcoholConsump', data=df)
+plt.title('Sleep HvyAlcoholConsump Distribution by Diabetes Status')
+plt.xlabel('Diabetes Status (0=None, 1=Pre, 2=Diabetes)')
+plt.show()
+
+#check how AnyHealthcare relates to Diabetes
+plt.figure(figsize=(8, 5))
+sns.countplot(x='Diabetes_012', hue='AnyHealthcare', data=df)
+plt.title('Diabetes Status by AnyHealthcare')
+plt.show()
 
 
 #heatmap of correlation to understand bettween in data in the dataset
