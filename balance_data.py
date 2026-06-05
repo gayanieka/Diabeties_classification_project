@@ -2,6 +2,7 @@ from imblearn.over_sampling import SMOTE
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import classification_report
 from predictive_modeling import X_train
+from predictive_modeling import y_train
 
 # 1. Apply SMOTE to balance the training data
 smote = SMOTE(random_state=42)
