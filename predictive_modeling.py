@@ -30,3 +30,5 @@ feat_importances = pd.Series(model.feature_importances_, index=X.columns)
 feat_importances.nlargest(10).plot(kind='barh')
 plt.title('Top 10 Most Important Features for Prediction')
 plt.show()
+
+
