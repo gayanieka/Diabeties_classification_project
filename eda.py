@@ -76,7 +76,6 @@ sns.boxplot(x='Diabetes_012', y='BMI', hue='HighChol', data=df)
 plt.title('BMI Distribution by Diabetes Status and High Cholesterol')
 plt.xlabel('Diabetes Status (0=None, 1=Pre, 2=Diabetes)')
 plt.ylabel('BMI')
-# Optional: Customize legend labels for clarity (0: No, 1: Yes)
 plt.legend(title='HighChol', labels=['No', 'Yes'])
 plt.show()
 
@@ -113,6 +112,24 @@ plt.title('Physical Health Distribution by Diabetes Status')
 plt.xlabel('Diabetes Status (0=None, 1=Pre, 2=Diabetes)')
 plt.show()
 
+#anova test for physical health and diabetes status
+# Separate PhysHlth data into the three groups
+phys_0 = df[df['Diabetes_012'] == 0]['PhysHlth']
+phys_1 = df[df['Diabetes_012'] == 1]['PhysHlth']
+phys_2 = df[df['Diabetes_012'] == 2]['PhysHlth']
+# Perform Kruskal-Wallis H-test
+h_stat, p_value = stats.kruskal(phys_0, phys_1, phys_2)
+print(f"Kruskal-Wallis H-test for PhysHlth:")
+print(f"H-statistic: {h_stat:.4f}")
+print(f"P-value: {p_value:.4e}")
+# Interpretation
+if p_value < 0.05:
+    print("Result: Reject the null hypothesis. There is a statistically significant difference in physical health outcomes across the groups.")
+else:
+    print("Result: Fail to reject the null hypothesis. Physical health differences are not statistically significant.")
+
+
+
 #check how mental health relates to Diabetes
 plt.figure(figsize=(10, 6))
 sns.boxplot(x='Diabetes_012', y='MentHlth', data=df)
@@ -132,6 +149,17 @@ plt.figure(figsize=(8, 5))
 sns.countplot(x='Diabetes_012', hue='AnyHealthcare', data=df)
 plt.title('Diabetes Status by AnyHealthcare')
 plt.show()
+
+#box plot for AnyHealthcare and diabetes status
+plt.figure(figsize=(10, 6))
+# Using 'AnyHealthcare' as the hue to group the boxes
+sns.boxplot(x='Diabetes_012', y='BMI', hue='AnyHealthcare', data=df)
+plt.title('BMI Distribution by Diabetes Status and Healthcare Access')
+plt.xlabel('Diabetes Status (0=None, 1=Pre, 2=Diabetes)')
+plt.ylabel('BMI')
+plt.legend(title='AnyHealthcare', labels=['No', 'Yes'])
+plt.show()
+
 
 #check how NoDocbcCost relates to Diabetes
 plt.figure(figsize=(8, 5))
