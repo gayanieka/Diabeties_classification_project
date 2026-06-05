@@ -14,15 +14,20 @@ plt.xlabel('Diabetes Status (0=None, 1=Pre, 2=Diabetes)')
 plt.show()
 
 #Check how Smoker status relates to Diabetes
-plt.figure(figsize=(8, 5))
-sns.countplot(x='Diabetes_012', hue='Smoker', data=df)
-plt.title('Diabetes Status by Smoker')
+plt.figure(figsize=(10, 6))
+sns.boxplot(x='Diabetes_012', y='BMI', hue='Smoker', data=df)
+plt.title('BMI Distribution by Diabetes Status and Smoker Status')
+plt.xlabel('Diabetes Status (0=None, 1=Pre, 2=Diabetes)')
+plt.ylabel('BMI')
 plt.show()
 
 #Check how physical activity status relates to Diabetes
-plt.figure(figsize=(8, 5))
-sns.countplot(x='Diabetes_012', hue='PhysActivity', data=df)
-plt.title('Diabetes Status by Physical Activity')
+plt.figure(figsize=(10, 6))
+sns.boxplot(x='Diabetes_012', y='BMI', hue='PhysActivity', data=df)
+plt.title('BMI Distribution by Diabetes Status and Physical Activity')
+plt.xlabel('Diabetes Status (0=None, 1=Pre, 2=Diabetes)')
+plt.ylabel('BMI')
+plt.legend(title='PhysActivity', labels=['Inactive', 'Active'])
 plt.show()
 
 #Check how age relates to Diabetes
@@ -33,10 +38,15 @@ plt.xlabel('Diabetes Status (0=None, 1=Pre, 2=Diabetes)')
 plt.show()
 
 #check how high blood pressure relates to Diabetes
-plt.figure(figsize=(8, 5))
-sns.countplot(x='Diabetes_012', hue='HighBP', data=df)
-plt.title('Diabetes Status by High Blood Pressure')
+plt.figure(figsize=(10, 6))
+sns.boxplot(x='Diabetes_012', y='BMI', hue='HighBP', data=df)
+
+plt.title('BMI Distribution by Diabetes Status and High Blood Pressure')
+plt.xlabel('Diabetes Status (0=None, 1=Pre, 2=Diabetes)')
+plt.ylabel('BMI')
+plt.legend(title='HighBP', labels=['No', 'Yes'])
 plt.show()
+
 
 #check how high cholesterol relates to Diabetes
 plt.figure(figsize=(8, 5))
@@ -111,11 +121,11 @@ plt.xlabel('Diabetes Status (0=None, 1=Pre, 2=Diabetes)')
 plt.show()
 
 
-
 #heatmap of correlation to understand bettween in data in the dataset
 plt.figure(figsize=(12, 10))
 sns.heatmap(df.corr(), annot=True, cmap='coolwarm', fmt='.2f')
 plt.title('Correlation Heatmap')
 plt.show()
+
 
 
