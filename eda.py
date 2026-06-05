@@ -71,10 +71,15 @@ plt.show()
 
 
 #check how high cholesterol relates to Diabetes
-plt.figure(figsize=(8, 5))
-sns.countplot(x='Diabetes_012', hue='HighChol', data=df)
-plt.title('Diabetes Status by High Cholesterol')
+plt.figure(figsize=(10, 6))
+sns.boxplot(x='Diabetes_012', y='BMI', hue='HighChol', data=df)
+plt.title('BMI Distribution by Diabetes Status and High Cholesterol')
+plt.xlabel('Diabetes Status (0=None, 1=Pre, 2=Diabetes)')
+plt.ylabel('BMI')
+# Optional: Customize legend labels for clarity (0: No, 1: Yes)
+plt.legend(title='HighChol', labels=['No', 'Yes'])
 plt.show()
+
 
 #check how general health relates to Diabetes
 plt.figure(figsize=(10, 6))
