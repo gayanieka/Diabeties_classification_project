@@ -24,3 +24,9 @@ y_pred = model.predict(X_test)
 
 print("--- Classification Report ---")
 print(classification_report(y_test, y_pred))
+
+# 5. Feature Importance (To see which variable is the strongest predictor)
+feat_importances = pd.Series(model.feature_importances_, index=X.columns)
+feat_importances.nlargest(10).plot(kind='barh')
+plt.title('Top 10 Most Important Features for Prediction')
+plt.show()
